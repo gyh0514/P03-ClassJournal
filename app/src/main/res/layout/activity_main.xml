@@ -8,6 +8,7 @@
     tools:context="android.myapplicationdev.com.p03_classjournal.MainActivity">
 
     <ListView
+        android:id="@+id/lvModule"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </LinearLayout>
