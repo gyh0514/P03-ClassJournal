@@ -1,6 +1,7 @@
 package android.myapplicationdev.com.p03_classjournal;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ public class SecondActivity extends AppCompatActivity {
     ArrayAdapter aa;
     ArrayList<DailyGrade> gradeList;
     Button btnEmail;
+    Button btnInfo;
     String message = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,7 @@ public class SecondActivity extends AppCompatActivity {
         setContentView(R.layout.activity_second);
         Intent i = getIntent();
         String title = i.getStringExtra("moduleCode");
+        final String url = i.getStringExtra("url");
         setTitle("Info for "+title);
         lv = (ListView)findViewById(R.id.lvGrades);
         gradeList = new ArrayList<DailyGrade>();
@@ -57,6 +60,17 @@ public class SecondActivity extends AppCompatActivity {
                 // this MIME type, which is, email
                 startActivity(Intent.createChooser(email,
                         "Choose an Email client :"));
+            }
+        });
+        btnInfo = (Button) findViewById(R.id.buttonInfo);
+        btnInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View arg0) {
+                // Intent to display data
+                Intent rpIntent = new Intent(Intent.ACTION_VIEW);
+                // Set the URL to be used.
+                rpIntent.setData(Uri.parse(url));
+                startActivity(rpIntent);
             }
         });
 
