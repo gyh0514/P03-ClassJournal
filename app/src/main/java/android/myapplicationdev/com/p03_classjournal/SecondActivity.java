@@ -52,13 +52,14 @@ public class SecondActivity extends AppCompatActivity {
         btnEmail = (Button) findViewById(R.id.buttonEmail);
         btnAdd = (Button) findViewById(R.id.buttonAdd);
 
-        for (int num = 0; num < gradeList.size(); num++) {
-            message += "Week " + gradeList.get(num).getWeek() + ": DG: " + gradeList.get(num).getGrade() + "\n";
-        }
-
         btnEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                for (int num = 0; num < gradeList.size(); num++) {
+                    message += "Week " + gradeList.get(num).getWeek() + ": DG: " + gradeList.get(num).getGrade() + "\n";
+                }
+
                 // The action you want this intent to do;
                 // ACTION_SEND is used to indicate sending text
                 Intent email = new Intent(Intent.ACTION_SEND);
