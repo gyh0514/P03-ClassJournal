@@ -18,7 +18,7 @@ public class SecondActivity extends AppCompatActivity {
     ListView lv;
     ArrayAdapter aa;
     ArrayList<DailyGrade> gradeList;
-    String message;
+    String message = "";
     Button btnInfo;
     Button btnEmail;
 
