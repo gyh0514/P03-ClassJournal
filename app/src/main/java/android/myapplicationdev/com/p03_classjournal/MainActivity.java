@@ -25,8 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
         al = new ArrayList<>();
 
-        rowForModule c302 = new rowForModule("C302", "Web Services");
-        rowForModule c347 = new rowForModule("C347", "Android Programming II");
+        rowForModule c302 = new rowForModule("C302", "Web Services", "http://www.rp.edu.sg/Module_Synopses/C302_Web_Services.aspx");
+        rowForModule c347 = new rowForModule("C347", "Android Programming II", "http://www.rp.edu.sg/Module_Synopses/C347_Android_Programming_II.aspx");
 
         al.add(c302);
         al.add(c347);
@@ -45,6 +45,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                 i.putExtra("moduleCode", currentInfo.getModuleCode());
+                i.putExtra("url", currentInfo.getUrl());
                 startActivity(i);
 
             }
