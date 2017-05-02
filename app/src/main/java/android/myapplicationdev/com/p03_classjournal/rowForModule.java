@@ -7,10 +7,12 @@ package android.myapplicationdev.com.p03_classjournal;
 public class rowForModule {
     String moduleCode;
     String moduleName;
+    String url;
 
-    public rowForModule(String moduleCode, String moduleName) {
+    public rowForModule(String moduleCode, String moduleName, String url) {
         this.moduleCode = moduleCode;
         this.moduleName = moduleName;
+        this.url = url;
     }
 
     public String getModuleCode() {
@@ -27,5 +29,13 @@ public class rowForModule {
 
     public void setModuleName(String moduleName) {
         this.moduleName = moduleName;
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
     }
 }
