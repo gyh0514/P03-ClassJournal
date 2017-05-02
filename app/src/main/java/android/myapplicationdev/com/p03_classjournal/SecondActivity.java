@@ -12,11 +12,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import static android.R.id.message;
+
 public class SecondActivity extends AppCompatActivity {
     ListView lv;
     ArrayAdapter aa;
     ArrayList<DailyGrade> gradeList;
+    String message;
     Button btnInfo;
+    Button btnEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,12 +29,12 @@ public class SecondActivity extends AppCompatActivity {
         Intent i = getIntent();
         String title = i.getStringExtra("moduleCode");
         final String url = i.getStringExtra("url");
-        setTitle("Info for "+title);
-        lv = (ListView)findViewById(R.id.lvGrades);
-        btnInfo = (Button)findViewById(R.id.buttonInfo);
+        setTitle("Info for " + title);
+        lv = (ListView) findViewById(R.id.lvGrades);
+        btnInfo = (Button) findViewById(R.id.buttonInfo);
         gradeList = new ArrayList<DailyGrade>();
 
-        if(title.equalsIgnoreCase("C302")){
+        if (title.equalsIgnoreCase("C302")) {
             gradeList.add(new DailyGrade(1, "B"));
             gradeList.add(new DailyGrade(2, "C"));
             gradeList.add(new DailyGrade(3, "A"));
@@ -39,11 +43,38 @@ public class SecondActivity extends AppCompatActivity {
             gradeList.add(new DailyGrade(2, "A"));
             gradeList.add(new DailyGrade(3, "A"));
         }
-        
+
 
         aa = new DailyGradeAdapter(this, R.layout.row, gradeList);
         lv.setAdapter(aa);
 
+        btnEmail = (Button) findViewById(R.id.buttonEmail);
+
+        for (int num = 0; num < gradeList.size(); num++) {
+            message += "Week " + gradeList.get(num).getWeek() + ": DG: " + gradeList.get(num).getGrade() + "\n";
+        }
+
+        btnEmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // The action you want this intent to do;
+                // ACTION_SEND is used to indicate sending text
+                Intent email = new Intent(Intent.ACTION_SEND);
+                // Put essentials like email address, subject & body text
+                email.putExtra(Intent.EXTRA_EMAIL,
+                        new String[]{"jason_lim@rp.edu.sg"});
+                email.putExtra(Intent.EXTRA_SUBJECT,
+                        "Test Email from C347");
+                email.putExtra(Intent.EXTRA_TEXT,
+                        message);
+                // This MIME type indicates email
+                email.setType("message/rfc822");
+                // createChooser shows user a list of app that can handle
+                // this MIME type, which is, email
+                startActivity(Intent.createChooser(email,
+                        "Choose an Email client :"));
+            }
+        });
         btnInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View arg0) {
@@ -57,4 +88,5 @@ public class SecondActivity extends AppCompatActivity {
 
 
     }
+
 }
