@@ -22,7 +22,7 @@ public class SecondActivity extends AppCompatActivity {
 
     int sizeOfWeeks;
     int requestCodeForGrade = 1;
-
+//hi
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
