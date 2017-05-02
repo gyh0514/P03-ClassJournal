@@ -19,8 +19,10 @@ import java.util.ArrayList;
 public class DailyGradeAdapter extends ArrayAdapter<DailyGrade>{
     private Context context;
     private ArrayList<DailyGrade> grades;
+    //private ArrayList<DifferentModuleDG> differentModules;
     private TextView tvGrade;
     private TextView tvWeek;
+
 
     public DailyGradeAdapter(Context context, int resource, ArrayList<DailyGrade> objects){
         super(context, resource, objects);
@@ -40,6 +42,8 @@ public class DailyGradeAdapter extends ArrayAdapter<DailyGrade>{
         // Get the TextView object
         tvGrade = (TextView) rowView.findViewById(R.id.textViewGrade);
         tvWeek = (TextView)rowView.findViewById(R.id.textViewWeek);
+
+
 
         // The parameter "position" is the index of the
         //  row ListView is requesting.
